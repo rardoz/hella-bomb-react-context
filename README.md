@@ -1,7 +1,7 @@
 # 💣 💥 Hella Bomb React Context 16.3.0-alpha.x 💥  💣
 
 [![npm version](https://badge.fury.io/js/hella-bomb-react-context.svg)](https://badge.fury.io/js/hella-bomb-react-context)
-[![dependencies](https://david-dm.org/username/repo.svgbadge?sanitize=true)](https://github.com/rardoz/hella-bomb-react-context/blob/master/package.json)
+[![dependencies](https://david-dm.org/rardoz/hella-bomb-react-context.svg?sanitize=true)](https://github.com/rardoz/hella-bomb-react-context/blob/master/package.json)
 [![coverage](https://raw.githubusercontent.com/rardoz/hella-bomb-react-context/master/badges/coverage.svg?sanitize=true)](https://circleci.com/gh/rardoz/hella-bomb-react-context)
 [![test](https://circleci.com/gh/rardoz/hella-bomb-react-context.svg?style=svg)](https://circleci.com/gh/rardoz/hella-bomb-react-context)
 

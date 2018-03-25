@@ -4,14 +4,13 @@
   "description": "This is a React 16.3 Context API component that greatly reduces the complexity of handling global state. ✌Duces Redux!",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo 🤑 &&  jest --env=jsdom --no-cache",
-    "test:ci": "echo ⛺ && npm run coverage && npm run build",
-    "coverage": "echo 🙈 && jest --env=jsdom --no-cache --coverage",
-    "coverage:badge": "echo 🏅 && lcov-badge-generator ./coverage/lcov.info -o ./badges/coverage.svg",
-    "lint": "echo 🧚 && prettier src/**.js --write",
-    "precommit": "echo 💾 && npm run lint && npm run coverage:badge && npm run build && git add ./build && git add ./badges",
-    "build": "echo 💩 && NODE_ENV=production npm run build:latest",
-    "build:latest": "echo 🐲 && babel ./src/index.js --out-file ./build/index.js",
+    "test": "echo 🤑 test... &&  jest --env=jsdom --no-cache",
+    "coverage": "echo 🙈 coverage... && jest --env=jsdom --no-cache --coverage",
+    "coverage:badge": "echo 🏅 coverage badge... && lcov-badge-generator ./coverage/lcov.info -o ./badges/coverage.svg",
+    "lint": "echo 🧚 lint prettier... && prettier src/**.js --write",
+    "precommit": "echo 💾 precommit... && npm run lint && npm run coverage:badge && npm run build && git add ./build && git add ./badges",
+    "build": "echo 💩 build... && NODE_ENV=production npm run build:latest",
+    "build:latest": "echo 🐲 building latest... && babel ./src/index.js --out-file ./build/index.js",
     "postinstall": "echo 👽 BY ROJO 👽"
   },
   "repository": {
