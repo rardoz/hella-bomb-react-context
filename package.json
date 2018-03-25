@@ -12,7 +12,8 @@
     "prepush": "echo 🐶 pushing... && npm run test",
     "build": "echo 💩 build... && NODE_ENV=production npm run build:latest",
     "build:latest": "echo 🐲 building latest... && babel ./src/index.js --out-file ./build/index.js",
-    "postinstall": "echo 👽 BY ROJO 👽"
+    "postinstall": "echo 👽 BY ROJO 👽",
+    "prepublish": "npm run test && npm run build"
   },
   "repository": {
     "type": "git",
