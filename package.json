@@ -1,6 +1,6 @@
 {
   "name": "hella-bomb-react-context",
-  "version": "0.2.1",
+  "version": "0.2.0",
   "description": "This is a React 16.3 Context API component that greatly reduces the complexity of handling global state. ✌Duces Redux!",
   "main": "build/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "build": "echo 💩 build... && NODE_ENV=production npm run build:latest",
     "build:latest": "echo 🐲 building latest... && babel ./src/index.js --out-file ./build/index.js",
     "postinstall": "echo 👽 BY ROJO 👽",
-    "prepublish": "npm run test && npm run build"
+    "prepare": "npm run test && npm run build"
   },
   "repository": {
     "type": "git",

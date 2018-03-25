@@ -26,7 +26,7 @@ export default class extends React.Component {
 }
 ```
 
-All of the child components now have access to the global state. You can set state and read state by calling actions.setState within a `Consumer` component as seen below.
+All of the child components now have access to the global state. You can set state and read state by calling actions.changeState within a `Consumer` component as seen below.
 
 ```jsx
 import { Consumer } from 'hella-bomb-react-context'
@@ -34,7 +34,7 @@ export default () => (
   <Consumer>
     {({ state: { count = 0 }, actions }) => (
       <button
-        onClick={() => actions.setState({ count: count + 1 })}
+        onClick={() => actions.changeState({ count: count + 1 })}
       >
         Click to increase count {count}
       </button>

@@ -15,7 +15,7 @@ export class StateProvider extends Component {
     //initial state goes here
   };
 
-  addToState = (newState = {}) => {
+  changeState = (newState = {}) => {
     this.setState({ ...newState });
   };
 
@@ -25,7 +25,7 @@ export class StateProvider extends Component {
         value={{
           state: this.state,
           actions: {
-            setState: (state = {}) => this.addToState(state)
+            changeState: this.changeState
           }
         }}
       >

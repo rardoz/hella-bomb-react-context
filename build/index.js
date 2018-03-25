@@ -42,7 +42,7 @@ var StateProvider = exports.StateProvider = function (_Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = StateProvider.__proto__ || Object.getPrototypeOf(StateProvider)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       //initial state goes here
-    }, _this.addToState = function () {
+    }, _this.changeState = function () {
       var newState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
       _this.setState(Object.assign({}, newState));
@@ -53,22 +53,13 @@ var StateProvider = exports.StateProvider = function (_Component) {
     key: "render",
     value: function () {
       function render() {
-        var _this2 = this;
-
         return _react2["default"].createElement(
           Provider,
           {
             value: {
               state: this.state,
               actions: {
-                setState: function () {
-                  function setState() {
-                    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-                    return _this2.addToState(state);
-                  }
-
-                  return setState;
-                }()
+                changeState: this.changeState
               }
             }
           },

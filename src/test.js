@@ -5,7 +5,7 @@ import { StateProvider, Consumer } from "./index";
 const Button = () => (
   <Consumer>
     {({ state: { count = 0 }, actions }) => (
-      <button onClick={() => actions.setState({ count: count + 1 })}>
+      <button onClick={() => actions.changeState({ count: count + 1 })}>
         {count}
       </button>
     )}
