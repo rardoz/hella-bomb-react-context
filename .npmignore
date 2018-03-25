@@ -1,0 +1,14 @@
+node_modules
+badges
+.vscode
+src/test.js
+.babelrc
+.npmignore
+.nvmrc
+junit.xml
+.git
+package-lock.json
+.circleci
+jest.config.js
+coverage
+yarn.lock
