@@ -36,6 +36,6 @@ jobs:
           name: Test JS
           command: "npm test"
 
-      - build:
+      - run:
           name: Build
           command: "npm run build"
