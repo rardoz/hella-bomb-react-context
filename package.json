@@ -2,7 +2,7 @@
   "name": "hella-bomb-react-context",
   "version": "0.1.0",
   "description": "This is a React 16.3 Context API component that greatly reduces the complexity of handling global state. ✌Duces Redux!",
-  "main": "dist/index.js",
+  "main": "build/index.js",
   "scripts": {
     "test": "echo 🤑 test... &&  jest --env=jsdom --no-cache",
     "coverage": "echo 🙈 coverage... && jest --env=jsdom --no-cache --coverage",
