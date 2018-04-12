@@ -21,15 +21,15 @@ export class StateProvider extends Component {
   };
 
   getActionName = (actionObject = {}) => {
-    for(key in actionObject) return key
-    return '';
-  }
+    for (key in actionObject) return key;
+    return "";
+  };
 
   addActions = (actions = {}, initialState = {}) => {
-    const actionsState = {...this.state.actions}
-    for (key in actions) actionsState[key] = actions[key]
-    this.setState({actions: actionsState})
-  }
+    const actionsState = { ...this.state.actions };
+    for (key in actions) actionsState[key] = actions[key];
+    this.setState({ actions: actionsState });
+  };
 
   render() {
     return (
