@@ -49,10 +49,10 @@
     "jest": "^22.4.3",
     "lcov-badge-generator": "^1.0.5",
     "prettier": "^1.11.1",
-    "react": "^16.3.0-alpha.2",
-    "react-dom": "^16.3.0-alpha.2"
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1"
   },
   "peerDependencies": {
-    "react": "~16.3.0-alpha.0"
+    "react": "~16.3.0"
   }
 }

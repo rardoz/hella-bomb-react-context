@@ -40,12 +40,26 @@ var StateProvider = exports.StateProvider = function (_Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = StateProvider.__proto__ || Object.getPrototypeOf(StateProvider)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      //initial state goes here
-    }, _this.changeState = function () {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = StateProvider.__proto__ || Object.getPrototypeOf(StateProvider)).call.apply(_ref, [this].concat(args))), _this), _this.state = Object.assign({
+      actions: []
+    }, _this.props.initialState), _this.changeState = function () {
       var newState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
       _this.setState(Object.assign({}, newState));
+    }, _this.getActionName = function () {
+      var actionObject = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      for (key in actionObject) {
+        return key;
+      }return "";
+    }, _this.addActions = function () {
+      var actions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var initialState = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+      var actionsState = Object.assign({}, _this.state.actions);
+      for (key in actions) {
+        actionsState[key] = actions[key];
+      }_this.setState({ actions: actionsState });
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -58,9 +72,10 @@ var StateProvider = exports.StateProvider = function (_Component) {
           {
             value: {
               state: this.state,
-              actions: {
-                changeState: this.changeState
-              }
+              actions: Object.assign({
+                changeState: this.changeState,
+                addAction: this.addAction
+              }, this.props.actions, this.state.actions)
             }
           },
           this.props.children

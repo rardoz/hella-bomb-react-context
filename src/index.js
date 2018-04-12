@@ -12,12 +12,24 @@ export class StateProvider extends Component {
   };
 
   state = {
-    //initial state goes here
+    actions: [],
+    ...this.props.initialState
   };
 
   changeState = (newState = {}) => {
     this.setState({ ...newState });
   };
+
+  getActionName = (actionObject = {}) => {
+    for(key in actionObject) return key
+    return '';
+  }
+
+  addActions = (actions = {}, initialState = {}) => {
+    const actionsState = {...this.state.actions}
+    for (key in actions) actionsState[key] = actions[key]
+    this.setState({actions: actionsState})
+  }
 
   render() {
     return (
@@ -25,7 +37,10 @@ export class StateProvider extends Component {
         value={{
           state: this.state,
           actions: {
-            changeState: this.changeState
+            changeState: this.changeState,
+            addAction: this.addAction,
+            ...this.props.actions,
+            ...this.state.actions
           }
         }}
       >
