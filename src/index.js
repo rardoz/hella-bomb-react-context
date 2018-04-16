@@ -8,15 +8,24 @@ export const { Provider, Consumer } = Context;
 
 export class StateProvider extends Component {
   static defaultProps = {
-    children: []
+    children: [],
+    initialState: {},
+    actions: {}
   };
 
   state = {
-    //initial state goes here
+    actions: { ...this.props.actions },
+    ...this.props.initialState
   };
 
   changeState = (newState = {}) => {
     this.setState({ ...newState });
+  };
+
+  addActions = (actions = {}) => {
+    const actionsState = { ...this.state.actions };
+    for (let key in actions) actionsState[key] = actions[key];
+    this.setState({ actions: actionsState });
   };
 
   render() {
@@ -25,7 +34,9 @@ export class StateProvider extends Component {
         value={{
           state: this.state,
           actions: {
-            changeState: this.changeState
+            changeState: this.changeState,
+            addActions: this.addActions,
+            ...this.state.actions
           }
         }}
       >

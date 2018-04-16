@@ -40,12 +40,19 @@ var StateProvider = exports.StateProvider = function (_Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = StateProvider.__proto__ || Object.getPrototypeOf(StateProvider)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      //initial state goes here
-    }, _this.changeState = function () {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = StateProvider.__proto__ || Object.getPrototypeOf(StateProvider)).call.apply(_ref, [this].concat(args))), _this), _this.state = Object.assign({
+      actions: Object.assign({}, _this.props.actions)
+    }, _this.props.initialState), _this.changeState = function () {
       var newState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
       _this.setState(Object.assign({}, newState));
+    }, _this.addActions = function () {
+      var actions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      var actionsState = Object.assign({}, _this.state.actions);
+      for (var key in actions) {
+        actionsState[key] = actions[key];
+      }_this.setState({ actions: actionsState });
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -58,9 +65,10 @@ var StateProvider = exports.StateProvider = function (_Component) {
           {
             value: {
               state: this.state,
-              actions: {
-                changeState: this.changeState
-              }
+              actions: Object.assign({
+                changeState: this.changeState,
+                addActions: this.addActions
+              }, this.state.actions)
             }
           },
           this.props.children
@@ -75,5 +83,7 @@ var StateProvider = exports.StateProvider = function (_Component) {
 }(_react.Component);
 
 StateProvider.defaultProps = {
-  children: []
+  children: [],
+  initialState: {},
+  actions: {}
 };
