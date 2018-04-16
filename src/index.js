@@ -14,7 +14,7 @@ export class StateProvider extends Component {
   };
 
   state = {
-    actions: {...this.props.actions},
+    actions: { ...this.props.actions },
     ...this.props.initialState
   };
 

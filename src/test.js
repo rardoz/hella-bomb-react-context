@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { StateProvider, Consumer } from "./index";
 
-let actionAdded = false
+let actionAdded = false;
 
 const CountButton = () => (
   <Consumer>
     {({ state: { count = 0 }, actions }) => (
-      <button id="countTestBtn" onClick={() => actions.changeState({ count: count + 1 })}>
+      <button
+        id="countTestBtn"
+        onClick={() => actions.changeState({ count: count + 1 })}
+      >
         {count}
       </button>
     )}
@@ -16,30 +19,38 @@ const CountButton = () => (
 
 const ActionTestButton = () => (
   <Consumer>
-    {({ state: { testDeepState = []}, actions: {changeState, testDeep}}) => (
+    {({
+      state: { testDeepState = [] },
+      actions: { changeState, testDeep }
+    }) => (
       <button id="actionTestBtn" onClick={() => testDeep(changeState)}>
-        {testDeepState[0] && testDeepState[0].test ? 'cool' : 'not cool'}
+        {testDeepState[0] && testDeepState[0].test ? "cool" : "not cool"}
       </button>
     )}
   </Consumer>
 );
 
-
 const AddActionTestButton = () => (
   <Consumer>
-    {({ state: { testDeepState = [], cool = false}, actions: {addActions, changeState, testDeep, boom}}) => (
+    {({
+      state: { testDeepState = [], cool = false },
+      actions: { addActions, changeState, testDeep, boom }
+    }) => (
       <div>
-          <button id="addActionBtn" onClick={() => {
-             addActions({
-              boom: () => changeState({cool: !cool})
-            })
-          }}>
-            ;)
-          </button>
-          <button id="addActionTestBtn" onClick={boom}>
-            {cool ? 'hella bomb' : 'not hella bomb'}
-          </button>
-        </div>
+        <button
+          id="addActionBtn"
+          onClick={() => {
+            addActions({
+              boom: () => changeState({ cool: !cool })
+            });
+          }}
+        >
+          ;)
+        </button>
+        <button id="addActionTestBtn" onClick={boom}>
+          {cool ? "hella bomb" : "not hella bomb"}
+        </button>
+      </div>
     )}
   </Consumer>
 );
@@ -56,17 +67,14 @@ class TestComponent extends Component {
   render() {
     return (
       <StateProvider
-        initialState={
-          {
-            count: 6,
-            testDeepState: [{test: false}]
-          }
-        }
-        actions={
-          {
-            testDeep: changeState => changeState({testDeepState: [{test: true}]})
-          }
-        }
+        initialState={{
+          count: 6,
+          testDeepState: [{ test: false }]
+        }}
+        actions={{
+          testDeep: changeState =>
+            changeState({ testDeepState: [{ test: true }] })
+        }}
       >
         <App />
       </StateProvider>
@@ -75,7 +83,11 @@ class TestComponent extends Component {
 }
 
 describe("💣 💥 Hella Bomb React Context 💥 💣", () => {
-  let container, countButton, actionButton, addActionButton, addActionTestButton;
+  let container,
+    countButton,
+    actionButton,
+    addActionButton,
+    addActionTestButton;
 
   beforeAll(() => {
     container = document.createElement("div");
@@ -84,11 +96,11 @@ describe("💣 💥 Hella Bomb React Context 💥 💣", () => {
   });
 
   beforeEach(() => {
-    countButton = document.getElementById("countTestBtn")
-    actionButton = document.getElementById("actionTestBtn")
-    addActionTestButton = document.getElementById("addActionTestBtn")
-    addActionButton = document.getElementById("addActionBtn")
-  })
+    countButton = document.getElementById("countTestBtn");
+    actionButton = document.getElementById("actionTestBtn");
+    addActionTestButton = document.getElementById("addActionTestBtn");
+    addActionButton = document.getElementById("addActionBtn");
+  });
 
   it("should accept initial state", () => {
     expect(countButton.textContent).toBe("6");
@@ -99,14 +111,14 @@ describe("💣 💥 Hella Bomb React Context 💥 💣", () => {
     expect(countButton.textContent).toBe("7");
     countButton.click();
     expect(countButton.textContent).toBe("8");
-  })
+  });
 
   it("should have custom actions", () => {
-      expect(addActionTestButton.textContent).toBe("not hella bomb");
-      addActionTestButton.click()
-      expect(addActionTestButton.textContent).toBe("not hella bomb");
-      addActionButton.click()
-      addActionTestButton.click()
-      expect(addActionTestButton.textContent).toBe("hella bomb");
-   })
+    expect(addActionTestButton.textContent).toBe("not hella bomb");
+    addActionTestButton.click();
+    expect(addActionTestButton.textContent).toBe("not hella bomb");
+    addActionButton.click();
+    addActionTestButton.click();
+    expect(addActionTestButton.textContent).toBe("hella bomb");
+  });
 });
